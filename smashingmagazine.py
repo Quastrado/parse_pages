@@ -18,6 +18,8 @@ def get_user_data(date_entry, resolution):
 
 
 def file_name_generate(heading):
+    if not os.path.exists('sm_images'):
+        os.makedirs('sm_images')
     file_name = 'sm_images/{heading}.png'
     if os.path.isfile(file_name):
         file_name = f'sm_images/{heading}-ex2.png'
@@ -65,24 +67,3 @@ if __name__ == '__main__':
     except Exception:
         exit('Incorrect input')
     print(image_download(data_set))
-
-# tests:
-
-
-def test_get_user_data():
-    with pytest.raises(Exception):
-        assert get_user_data('2019 10', '1280:800')
-
-
-def test_image_download():
-    inputs = ('2019-10', '1280x800')
-    with mock.patch.object(builtins, 'input', lambda message: next(inputs)):
-        date_entry = inputs[0]
-        resolution = inputs[1]
-        data_set = get_user_data(date_entry, resolution)
-        assert image_download(data_set) == 'Done!'
-
-
-def files_count():
-    images_list = os.listdir('/task_2_images')
-    assert len(images_list) == 30
