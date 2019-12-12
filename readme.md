@@ -44,7 +44,7 @@ Input data - organization url. Like:
 
 Clone the repository using git
 ```bash
-$ git clone https://github.com/Quastrado/
+$ git clone https://github.com/Quastrado/parse_pages.git
 ```
 Create a virtual environment in the project folder using the venv tool
 ```bash
